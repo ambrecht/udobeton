@@ -1,61 +1,81 @@
 import Image from "next/image"
+import Link from "next/link"
 import SectionIntro from "@/components/section-intro"
-import { craftPillars } from "@/lib/udo-beton-content"
+import { evidencePoints, homeEvidence } from "@/lib/udo-beton-content"
 
 export default function Gallery() {
   return (
-    <section id="handwerk" className="border-b border-white/10 px-4 py-14 sm:px-6 sm:py-18 lg:px-10">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 xl:grid-cols-[0.64fr_1.36fr] xl:items-start">
+    <section className="border-b border-white/10">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[0.42fr_1.58fr] lg:items-start">
           <SectionIntro
-            eyebrow="Evidenz / Handwerk"
-            title="Weniger Behauptung. Mehr Evidenz."
-            body="Ein Belegbild. Eine klare Belegkette."
-            titleClassName="max-w-[8.2ch]"
-            bodyClassName="max-w-[19rem]"
+            eyebrow="Evidenz"
+            title={homeEvidence.title}
+            body={homeEvidence.body}
+            titleClassName="max-w-[6.2ch]"
+            bodyClassName="max-w-[16rem]"
           />
 
-          <div className="grid gap-8 xl:grid-cols-[1.06fr_0.94fr] xl:items-start">
-            <figure className="relative min-h-[480px] overflow-hidden bg-white/[0.03] sm:min-h-[620px] xl:min-h-[720px]">
+          <div className="grid gap-8 xl:grid-cols-[1.04fr_0.96fr] xl:items-start">
+            <figure className="relative min-h-[480px] overflow-hidden rounded-[1.75rem] bg-white/[0.03] sm:min-h-[620px]">
               <Image
-                src="/images_1773763632451/149103c1-5d1e-428c-85c5-f0d19c6ae08b.png"
-                alt="UDO BETON Stiefel im Berliner Stadtraum"
+                src={homeEvidence.imageSrc}
+                alt={homeEvidence.imageAlt}
                 fill
-                sizes="(max-width: 1280px) 100vw, 48vw"
-                className="object-cover"
+                sizes="(max-width: 1280px) 100vw, 50vw"
+                className="object-cover object-[54%_48%]"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.16)_26%,rgba(0,0,0,0.82)_100%)]" />
-
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03),rgba(0,0,0,0.14)_28%,rgba(0,0,0,0.82)_100%)]" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/42">Beleg / Stadt</p>
-                <p className="mt-4 max-w-[12ch] font-serif text-[2.4rem] leading-[0.95] tracking-[-0.07em] text-white sm:text-[3rem] xl:text-[3.3rem]">
-                  Gebrauch hinterlässt ein schärferes Bild als jede Behauptung.
-                </p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/42">Gebrauch / Berlin</p>
               </figcaption>
             </figure>
 
-            <div className="flex flex-col gap-8 xl:pt-2">
-              <div>
-                <p className="max-w-[16ch] font-serif text-[2.5rem] leading-[0.94] tracking-[-0.07em] text-white sm:text-[3rem]">
-                  Material, Herkunft und Konstruktion müssen zuerst physisch wirken.
+            <div className="flex flex-col gap-7 xl:pt-2">
+              <article className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-5 sm:p-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/34">
+                  {homeEvidence.insert.label}
                 </p>
-                <p className="mt-4 max-w-[30ch] text-[16px] leading-[1.68] text-white/58 sm:text-[17px]">
-                  Nicht als Grafik. Nicht als Behauptung. Sondern als Spur von Leder, Naht, Sohle und Stadt.
+                <div className="relative mt-5 h-[180px] sm:h-[220px]">
+                  <Image
+                    src={homeEvidence.insert.imageSrc}
+                    alt={homeEvidence.insert.imageAlt}
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 24vw"
+                    className="object-contain object-center opacity-95"
+                  />
+                </div>
+                <h3 className="mt-4 max-w-[10ch] font-serif text-[2.25rem] leading-[0.92] tracking-[-0.07em] text-white sm:text-[2.6rem]">
+                  {homeEvidence.insert.title}
+                </h3>
+                <p className="mt-3 max-w-[21ch] text-[14px] leading-[1.58] text-white/56 sm:text-[15px]">
+                  {homeEvidence.insert.body}
                 </p>
-              </div>
+              </article>
 
-              <div className="grid gap-6">
-                {craftPillars.map((pillar, index) => (
-                  <article key={pillar.title} className={index > 0 ? "border-t border-white/10 pt-6" : ""}>
-                    <h3 className="font-serif text-[2.6rem] leading-[0.92] tracking-[-0.07em] text-white sm:text-[3rem]">
-                      {pillar.title}
+              <p className="max-w-[15ch] font-serif text-[2.25rem] leading-[0.94] tracking-[-0.07em] text-white sm:text-[2.8rem]">
+                Leder, Naht, Sohle und Gebrauch müssen sichtbar arbeiten.
+              </p>
+
+              <div className="grid gap-5">
+                {evidencePoints.map((point, index) => (
+                  <article key={point.title} className={index > 0 ? "border-t border-white/10 pt-5" : ""}>
+                    <h3 className="font-serif text-[2rem] leading-[0.92] tracking-[-0.06em] text-white sm:text-[2.3rem]">
+                      {point.title}
                     </h3>
-                    <p className="mt-3 max-w-[28ch] text-[15px] leading-[1.65] text-white/56 sm:text-[16px]">
-                      {pillar.body}
+                    <p className="mt-3 max-w-[24ch] text-[14px] leading-[1.58] text-white/56 sm:text-[15px]">
+                      {point.body}
                     </p>
                   </article>
                 ))}
               </div>
+
+              <Link
+                href={homeEvidence.action.href}
+                className="inline-block font-mono text-[12px] uppercase tracking-[0.16em] text-white transition hover:text-[#d31111]"
+              >
+                {homeEvidence.action.label}
+              </Link>
             </div>
           </div>
         </div>

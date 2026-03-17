@@ -1,37 +1,39 @@
-import { manifestoLines, manifestoPrinciples } from "@/lib/udo-beton-content"
+import Link from "next/link"
+import TechnicalArchive from "@/components/technical-archive"
+import { manifestoLines, technicalFacts } from "@/lib/udo-beton-content"
 
 export default function Manifest() {
   return (
-    <section id="manifest" className="border-b border-white/10 px-4 py-14 sm:px-6 sm:py-18 lg:px-10">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 xl:grid-cols-[1.14fr_0.86fr] xl:items-end">
+    <section>
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+        <div className="grid gap-8 xl:grid-cols-[0.92fr_1.08fr] xl:items-start">
           <article>
             <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/34">Manifest</p>
-
             <div className="mt-6 grid gap-3">
               {manifestoLines.map((line) => (
                 <p
                   key={line}
-                  className="max-w-[11ch] font-serif text-[3.9rem] leading-[0.82] tracking-[-0.1em] text-white sm:text-[5.2rem] xl:text-[5.9rem]"
+                  className="max-w-[11ch] font-serif text-[3rem] leading-[0.84] tracking-[-0.1em] text-white sm:text-[4rem] xl:text-[4.8rem]"
                 >
                   {line}
                 </p>
               ))}
             </div>
+
+            <Link
+              href="/manifest"
+              className="mt-8 inline-block font-mono text-[12px] uppercase tracking-[0.16em] text-white/54 transition hover:text-white"
+            >
+              Ganzes Manifest lesen
+            </Link>
           </article>
 
-          <div className="grid gap-4 border-t border-white/10 pt-6 xl:border-l xl:border-t-0 xl:pl-8 xl:pt-0">
-            {manifestoPrinciples.map((principle, index) => (
-              <article key={principle} className={index > 0 ? "border-t border-white/10 pt-4" : ""}>
-                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/[0.28]">
-                  0{index + 1}
-                </span>
-                <p className="mt-3 max-w-[18ch] font-serif text-[2rem] leading-[0.95] tracking-[-0.06em] text-white sm:text-[2.3rem]">
-                  {principle}
-                </p>
-              </article>
-            ))}
-          </div>
+          <TechnicalArchive
+            facts={technicalFacts.slice(0, 4)}
+            title="Archiv"
+            intro="Die sachliche Ebene bleibt ruhig."
+            compact
+          />
         </div>
       </div>
     </section>

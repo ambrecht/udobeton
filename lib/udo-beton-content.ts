@@ -1,28 +1,29 @@
 export type NavigationItem = {
-  id: string
+  href: string
   label: string
 }
 
-export type HeroAction = {
+export type ActionLink = {
+  href: string
   label: string
-  target: string
 }
 
-export type HeroContent = {
-  kicker: string
-  title: string
+export type HomeHeroContent = {
+  eyebrow: string
+  titleLines: string[]
   body: string
-  primaryAction: HeroAction
-  secondaryAction: HeroAction
-  proofline: string[]
-  closingLine: string
+  primaryAction: ActionLink
+  secondaryAction: ActionLink
+  objectDetails: string[]
+  note: string
+  imageSrc: string
+  imageAlt: string
 }
 
-export type CoreProof = {
+export type ProofItem = {
   eyebrow: string
   title: string
   body: string
-  notes: string[]
 }
 
 export type CarrierPortrait = {
@@ -30,23 +31,31 @@ export type CarrierPortrait = {
   name: string
   discipline: string
   description: string
-  location?: string
-  quote?: string
-  featuredModel?: string
-  portraitSrc?: string | null
+  location: string
+  quote: string
+  featuredModel: string
+  portraitSrc: string
   placeholderLabel: string
 }
 
-export type CraftPillar = {
+export type EvidencePoint = {
   title: string
   body: string
 }
 
-export type FitWidth = "F" | "G"
-
-export type FitNote = {
+export type HomeEvidenceContent = {
+  imageSrc: string
+  imageAlt: string
   title: string
   body: string
+  action: ActionLink
+  insert: {
+    label: string
+    title: string
+    body: string
+    imageSrc: string
+    imageAlt: string
+  }
 }
 
 export type BerlinLocation = {
@@ -54,6 +63,7 @@ export type BerlinLocation = {
   street: string
   mood: string
   invitation: string
+  details: string[]
 }
 
 export type TechnicalFact = {
@@ -61,48 +71,53 @@ export type TechnicalFact = {
   body: string
 }
 
-export const navigationItems: NavigationItem[] = [
-  { id: "der-schuh", label: "Der Schuh" },
-  { id: "handwerk", label: "Handwerk" },
-  { id: "traeger", label: "Träger" },
-  { id: "orte", label: "Orte" },
-  { id: "manifest", label: "Manifest" },
-]
-
-export const heroContent: HeroContent = {
-  kicker: "UDO BETON / HANDGEMACHT IN AUSTRIA / GETRAGEN IN BERLIN",
-  title: "Handgemacht in Austria. Getragen in Berlin.",
-  body: "Robustes Leder für Stadt und lange Nutzung.",
-  primaryAction: {
-    label: "In Berlin finden",
-    target: "orte",
-  },
-  secondaryAction: {
-    label: "Zur Evidenz",
-    target: "handwerk",
-  },
-  proofline: ["Echtes Leder", "Waldviertel", "Reparierbare Konstruktion"],
-  closingLine: "Ein Objekt, kein Accessoire.",
+export type PageLead = {
+  eyebrow: string
+  title: string
+  body: string
 }
 
-export const coreProofs: CoreProof[] = [
+export const navigationItems: NavigationItem[] = [
+  { href: "/der-schuh", label: "Der Schuh" },
+  { href: "/handwerk", label: "Handwerk" },
+  { href: "/traeger", label: "Träger" },
+  { href: "/orte", label: "Orte" },
+  { href: "/manifest", label: "Manifest" },
+]
+
+export const homeHero: HomeHeroContent = {
+  eyebrow: "UDO BETON / handgemacht in Austria / in Berlin",
+  titleLines: ["Handgemacht in Austria.", "Getragen in Berlin."],
+  body: "Ein robuster Lederschuh mit Haltung. Gebaut für lange Nutzung, zu sehen in Berlin.",
+  primaryAction: {
+    href: "/orte",
+    label: "In Berlin sehen",
+  },
+  secondaryAction: {
+    href: "/der-schuh",
+    label: "Der Schuh",
+  },
+  objectDetails: ["Sommertramper", "Veloursleder", "Vibram-Sohle"],
+  note: "Kein Shop-Theater. Erst Material, dann Eindruck am Fuß.",
+  imageSrc: "/images_1773763632451/newhero.jpg",
+  imageAlt: "UDO BETON Boot am Fuss neben einem Motorrad",
+}
+
+export const homeProofs: ProofItem[] = [
   {
     eyebrow: "01",
-    title: "Echtes Leder",
-    body: "Vegetabil gegerbtes Rindsleder mit sichtbarer Struktur. Es zeigt Spuren, statt sie zu glätten.",
-    notes: ["Patina statt Effekt", "Vom ersten Griff an lesbar"],
+    title: "Materialehrlich",
+    body: "Vegetabil gegerbtes Rindsleder. Offen für Patina statt Oberflächenlack.",
   },
   {
     eyebrow: "02",
     title: "Handgemacht in Austria",
-    body: "Gefertigt in kleinen Werkstätten im Waldviertel. Herkunft bleibt prüfbar, nicht bloß erzählt.",
-    notes: ["Kurze Serien", "Werkstatt statt Taktung"],
+    body: "Kleine Werkstätten im Waldviertel. Herkunft bleibt konkret.",
   },
   {
     eyebrow: "03",
-    title: "Gebaut für lange Nutzung",
-    body: "Flexnaht, belastbare Sohle, reparierbarer Aufbau. Gedacht für Jahre, nicht für kurze Aufmerksamkeit.",
-    notes: ["Neubesohlbar", "Für Straße und Alltag"],
+    title: "Für lange Nutzung gebaut",
+    body: "Flexnaht, reparierbare Sohle, belastbarer Aufbau. Gedacht für Jahre.",
   },
 ]
 
@@ -111,7 +126,7 @@ export const carrierPortraits: CarrierPortrait[] = [
     slug: "jule",
     name: "Jule M.",
     discipline: "Bühnenbild",
-    description: "Arbeitet mit Licht, Raum und rohen Oberflächen. Braucht Dinge, die Druck aushalten.",
+    description: "Zwischen Licht, Raum und rohen Flächen.",
     location: "Berlin-Mitte",
     quote: "Mich interessiert, was nach Monaten noch stimmt.",
     featuredModel: "Sommertramper",
@@ -122,7 +137,7 @@ export const carrierPortraits: CarrierPortrait[] = [
     slug: "arkan",
     name: "Arkan D.",
     discipline: "Musik",
-    description: "Zwischen Proberaum und Nachtfahrt. Trägt, was Reibung annimmt statt sie zu verstecken.",
+    description: "Zwischen Proberaum, Nachtfahrt und Straße.",
     location: "Kreuzberg",
     quote: "Zu glatt wird schnell unbrauchbar.",
     featuredModel: "Sommertramper",
@@ -133,7 +148,7 @@ export const carrierPortraits: CarrierPortrait[] = [
     slug: "mara",
     name: "Mara S.",
     discipline: "Metallwerkstatt",
-    description: "Werkstatt, Staub, Präzision. Braucht Material, das nicht ausweicht, wenn der Tag länger wird.",
+    description: "Werkstatt, Staub, Präzision.",
     location: "Prenzlauer Berg",
     quote: "Ich will kein Symbol. Ein gutes Paar genügt.",
     featuredModel: "Sommertramper",
@@ -142,44 +157,74 @@ export const carrierPortraits: CarrierPortrait[] = [
   },
 ]
 
-export const craftPillars: CraftPillar[] = [
-  {
-    title: "Waldviertel",
-    body: "Herkunft bleibt prüfbar. Werkstattwissen, Ruhe und Präzision kommen aus demselben Ort.",
+export const homeEvidence: HomeEvidenceContent = {
+  imageSrc: "/images_1773763632451/149103c1-5d1e-428c-85c5-f0d19c6ae08b.png",
+  imageAlt: "UDO BETON Boot im Berliner Stadtraum",
+  title: "Evidenz statt Behauptung.",
+  body: "Leder, Naht, Sohle und Gebrauch müssen den Schuh zuerst tragen können.",
+  action: {
+    href: "/handwerk",
+    label: "Zum Handwerk",
   },
-  {
-    title: "Flexnaht",
-    body: "Belastbar, reparierbar, sichtbar. Keine geklebte Behauptung, sondern echte Verbindung.",
+  insert: {
+    label: "Objekt",
+    title: "Klare Silhouette. Kein dekorativer Umweg.",
+    body: "Die Form bleibt lesbar, bevor irgendein Text helfen muss.",
+    imageSrc: "/images/beton_schuh_side.png",
+    imageAlt: "UDO BETON Lederschuh in Seitenansicht",
   },
+}
+
+export const evidencePoints: EvidencePoint[] = [
   {
     title: "Leder",
-    body: "Außen robust, innen direkt. Reagiert auf Wärme, Druck und Zeit. Nicht auf Saisons.",
+    body: "Offen für Patina. Nicht versiegelt auf Wirkung.",
+  },
+  {
+    title: "Naht",
+    body: "Sichtbar, belastbar, reparierbar.",
   },
   {
     title: "Sohle",
-    body: "Direkt am Boden, belastbar auf der Straße. Wenn sie verbraucht ist, wird sie ersetzt.",
+    body: "Direkt am Boden. Vibram mit klarer Rückmeldung.",
+  },
+  {
+    title: "Gebrauch",
+    body: "Ein Schuh muss Monate tragen, nicht Minuten beeindrucken.",
   },
 ]
 
-export const fitSizes = Array.from({ length: 14 }, (_, index) => index + 35)
-
-export const fitWidths: { value: FitWidth; label: string; hint: string }[] = [
-  { value: "F", label: "F", hint: "Normalweite" },
-  { value: "G", label: "G", hint: "Komfortweite" },
+export const shoeHighlights: EvidencePoint[] = [
+  {
+    title: "Form",
+    body: "Klare Kappe, ruhige Linie, kein dekorativer Umweg. Die Form bleibt lesbar.",
+  },
+  {
+    title: "Material",
+    body: "Rindsleder außen, Rindslederfutter innen. Direkt, robust und offen für Patina.",
+  },
+  {
+    title: "Aufbau",
+    body: "Flexnaht, austauschbare Sohle, belastbare Konstruktion. Nicht für kurze Aufmerksamkeit.",
+  },
 ]
 
-export const fitNotes: FitNote[] = [
+export const craftPillars: EvidencePoint[] = [
   {
-    title: "Größen 35 bis 48",
-    body: "Breite Spanne. Die Anprobe bleibt entscheidend.",
+    title: "Waldviertel",
+    body: "Werkstattwissen, Ruhe und Präzision kommen aus demselben Ort.",
   },
   {
-    title: "Weiten F und G",
-    body: "Zwei klare Leistenoptionen. Mehr braucht es nicht.",
+    title: "Leder",
+    body: "Außen robust, innen direkt. Reagiert auf Wärme, Druck und Zeit.",
   },
   {
-    title: "Anprobe vor Ort",
-    body: "Material und Spannung klären sich im Laden schneller.",
+    title: "Naht",
+    body: "Keine geklebte Behauptung, sondern eine nachvollziehbare Verbindung.",
+  },
+  {
+    title: "Sohle",
+    body: "Vibram-Gummi mit Grip und klarer Rückmeldung am Boden.",
   },
 ]
 
@@ -189,12 +234,14 @@ export const berlinLocations: BerlinLocation[] = [
     street: "Stargarder Straße",
     mood: "Ruhiger Blick aufs Material.",
     invitation: "Für die erste klare Anprobe.",
+    details: ["UDO vor Ort", "Direkter Materialeindruck"],
   },
   {
     district: "Kreuzberg",
     street: "Körtestraße",
-    mood: "Direkter am Takt der Straße.",
-    invitation: "Für den Eindruck am Fuß und im Alltag.",
+    mood: "Näher am Takt der Straße.",
+    invitation: "Für den Eindruck am Fuß.",
+    details: ["UDO vor Ort", "Straßennaher, unmittelbarer"],
   },
 ]
 
@@ -229,11 +276,46 @@ export const technicalFacts: TechnicalFact[] = [
     body: "Belastbarer Grip mit klarem Bodengefühl.",
   },
   {
-    title: "Kleine Serien",
-    body: "Begrenzte Werkstattkapazität statt anonymer Masse.",
+    title: "Größen 35 bis 48",
+    body: "Breite Spanne. Die Anprobe bleibt entscheidend.",
   },
   {
-    title: "Getragen in Berlin",
-    body: "Kein Dekor, sondern Alltag, Straße und Gebrauch.",
+    title: "Weiten F und G",
+    body: "Zwei klare Leistenoptionen. Mehr braucht es nicht.",
   },
 ]
+
+export const fitWidths: { value: "F" | "G"; label: string; hint: string }[] = [
+  { value: "F", label: "F", hint: "Normalweite" },
+  { value: "G", label: "G", hint: "Komfortweite" },
+]
+
+export const fitSizes = Array.from({ length: 14 }, (_, index) => index + 35)
+
+export const pageLeads: Record<"shoe" | "craft" | "carriers" | "locations" | "manifest", PageLead> = {
+  shoe: {
+    eyebrow: "Der Schuh",
+    title: "Form, Material und Aufbau. Ohne Verkaufsrhetorik.",
+    body: "Hier steht der Schuh selbst im Vordergrund: Form, Leder, Aufbau und die ruhige praktische Klarheit.",
+  },
+  craft: {
+    eyebrow: "Handwerk",
+    title: "Material und Konstruktion müssen zuerst physisch überzeugen.",
+    body: "Handwerk ist hier keine Stimmung. Es ist Leder, Naht, Sohle, Werkstatt und die nüchterne Realität des Machens.",
+  },
+  carriers: {
+    eyebrow: "Träger",
+    title: "Menschen geben dem Schuh sozialen Kontext.",
+    body: "Nicht als Kampagne. Sondern als reale Trägerinnen und Träger zwischen Werkstatt, Bühne, Straße und Proberaum.",
+  },
+  locations: {
+    eyebrow: "Orte",
+    title: "Zwei Berliner Marker. Zwei reale Eintrittspunkte.",
+    body: "UDO BETON lebt nicht im Browser allein. Die Läden in Prenzlauer Berg und Kreuzberg bleiben die klarsten Orte für den ersten Eindruck.",
+  },
+  manifest: {
+    eyebrow: "Manifest",
+    title: "Kurz. Hart. Lesbar genug für den ersten Blick.",
+    body: "Keine lange Erklärung. Ein paar klare Sätze und die ruhige sachliche Ebene darunter.",
+  },
+}

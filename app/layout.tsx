@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
-      <body className="font-inter antialiased">{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }

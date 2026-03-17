@@ -1,103 +1,74 @@
-"use client"
-
 import Image from "next/image"
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
-import { heroContent } from "@/lib/udo-beton-content"
+import Link from "next/link"
+import { homeHero } from "@/lib/udo-beton-content"
 
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const prefersReducedMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  })
-
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.01, 0.97])
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 22])
-  const imageStyle = prefersReducedMotion ? undefined : { scale: imageScale, y: imageY }
-
-  const scrollToSection = (target: string) => {
-    document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
-
   return (
-    <section id="der-schuh" ref={sectionRef} className="relative overflow-hidden border-b border-white/10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_24%,rgba(255,255,255,0.06),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.015),transparent_16%,rgba(0,0,0,0.32)_100%)]" />
-
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-10 lg:py-18">
-        <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end lg:gap-14">
-          <div className="relative z-10">
-            <p className="max-w-[34ch] font-mono text-[11px] uppercase tracking-[0.18em] text-white/38">
-              {heroContent.kicker}
-            </p>
-
-            <h1 className="mt-8 max-w-[8.1ch] font-serif text-[4.2rem] leading-[0.78] tracking-[-0.12em] text-white sm:text-[6rem] lg:text-[7.4rem] xl:text-[8.4rem]">
-              <span className="block">Handgemacht</span>
-              <span className="block pl-[6%]">in Austria.</span>
-              <span className="mt-4 block max-w-[8ch]">Getragen in Berlin.</span>
-            </h1>
-
-            <p className="mt-6 max-w-[21ch] text-[17px] leading-[1.65] text-white/66 sm:text-[18px]">
-              {heroContent.body}
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4 font-mono text-[12px] uppercase tracking-[0.16em]">
-              <button
-                type="button"
-                onClick={() => scrollToSection(heroContent.primaryAction.target)}
-                className="text-white transition hover:text-[#d31111]"
-              >
-                {heroContent.primaryAction.label}
-              </button>
-              <span className="text-white/18" aria-hidden>
-                /
-              </span>
-              <button
-                type="button"
-                onClick={() => scrollToSection(heroContent.secondaryAction.target)}
-                className="text-white/52 transition hover:text-white"
-              >
-                {heroContent.secondaryAction.label}
-              </button>
-            </div>
-
-            <p className="mt-14 max-w-[13ch] font-serif text-[2.15rem] leading-[0.94] tracking-[-0.07em] text-white sm:text-[2.65rem]">
-              {heroContent.closingLine}
-            </p>
+    <section className="border-b border-white/10">
+      <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-7 lg:px-10 lg:py-8">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-black">
+          <div className="absolute inset-0 lg:left-[28%]">
+            <Image
+              src={homeHero.imageSrc}
+              alt={homeHero.imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[54%_66%] sm:object-[54%_60%] lg:object-[52%_55%] xl:object-[50%_52%] [filter:grayscale(1)_contrast(1.22)_brightness(0.9)]"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.74)_100%)] lg:bg-[linear-gradient(90deg,rgba(0,0,0,0.97)_0%,rgba(0,0,0,0.9)_24%,rgba(0,0,0,0.5)_56%,rgba(0,0,0,0.16)_100%),linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.7)_100%)]" />
           </div>
 
-          <figure className="relative min-h-[400px] overflow-hidden bg-[radial-gradient(circle_at_52%_24%,rgba(255,255,255,0.14),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.72)_100%)] sm:min-h-[540px] lg:min-h-[760px]">
-            <div className="absolute left-0 top-0 h-3 w-24 bg-[#d31111] sm:w-32" />
-            <span className="pointer-events-none absolute right-[-3%] top-[4%] hidden font-serif text-[15rem] leading-[0.78] tracking-[-0.13em] text-white/[0.05] lg:block xl:text-[18rem]">
-              BETON
-            </span>
-            <div className="absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.62)_50%,rgba(0,0,0,0.92)_100%)]" />
-
-            <motion.div style={imageStyle} className="relative z-10 h-full">
-              <Image
-                src="/images/beton_schuh_side.png"
-                alt="UDO BETON Lederschuh in Seitenansicht"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-contain object-[70%_76%] px-2 pb-6 pt-12 sm:px-6 sm:pb-10 lg:px-10 lg:pb-14 lg:pt-20"
-              />
-            </motion.div>
-
-            <figcaption className="absolute inset-x-0 bottom-0 z-20 p-5 sm:p-7">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/44">Objekt 01 / Sommertramper</p>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div className="mt-8 border-t border-white/10 pt-4">
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {heroContent.proofline.map((item) => (
-              <p key={item} className="font-mono text-[12px] uppercase tracking-[0.16em] text-white/48">
-                {item}
+          <div className="relative z-10 flex min-h-[74svh] flex-col justify-between p-5 sm:min-h-[780px] sm:p-7 lg:min-h-[840px] lg:p-10">
+            <div className="max-w-[28rem]">
+              <span className="block h-[3px] w-14 bg-[#d31111]" />
+              <p className="mt-4 max-w-[28ch] font-mono text-[11px] uppercase tracking-[0.18em] text-white/44">
+                {homeHero.eyebrow}
               </p>
-            ))}
+            </div>
+
+            <div className="max-w-[34rem]">
+              <h1 className="max-w-[7.2ch] font-serif text-[3.8rem] leading-[0.84] tracking-[-0.11em] text-white sm:text-[5.2rem] lg:text-[6.2rem] xl:text-[6.8rem]">
+                {homeHero.titleLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </h1>
+
+              <p className="mt-5 max-w-[20ch] text-[16px] leading-[1.58] text-white/68 sm:text-[18px]">
+                {homeHero.body}
+              </p>
+
+              <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3 font-mono text-[12px] uppercase tracking-[0.16em]">
+                <Link href={homeHero.primaryAction.href} className="text-white transition hover:text-[#d31111]">
+                  {homeHero.primaryAction.label}
+                </Link>
+                <span className="text-white/18" aria-hidden>
+                  /
+                </span>
+                <Link href={homeHero.secondaryAction.href} className="text-white/48 transition hover:text-white">
+                  {homeHero.secondaryAction.label}
+                </Link>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4 border-t border-white/10 pt-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6 sm:pt-5">
+              <p className="max-w-[24ch] font-mono text-[11px] uppercase tracking-[0.16em] text-white/34">
+                {homeHero.note}
+              </p>
+
+              <div className="flex flex-wrap gap-x-4 gap-y-2 sm:justify-end">
+                {homeHero.objectDetails.map((detail) => (
+                  <span
+                    key={detail}
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/42"
+                  >
+                    {detail}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

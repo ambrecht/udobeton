@@ -1,28 +1,27 @@
-export function Footer() {
-  return (
-    <footer className="border-t-2 border-udo-muted py-12 px-8">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="font-space-grotesk font-bold">UDO BETON — Berlin</div>
+import Link from "next/link"
 
-        <div className="flex items-center gap-6">
-          <a
-            href="#"
-            className="text-udo-muted hover:text-udo-accent transition-colors focus:outline-none focus:ring-2 focus:ring-udo-accent"
+export default function Footer() {
+  return (
+    <footer className="border-t border-white/10">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-10">
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/36">UDO BETON</p>
+          <p className="mt-4 max-w-[11ch] font-serif text-[2.8rem] leading-[0.86] tracking-[-0.09em] text-white sm:text-[4rem]">
+            Handgemacht in Austria. Getragen in Berlin.
+          </p>
+        </div>
+
+        <div className="grid gap-2 text-left lg:text-right">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/34">
+            Prenzlauer Berg / Stargarder Straße
+          </p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/34">Kreuzberg / Körtestraße</p>
+          <Link
+            href="/orte"
+            className="mt-4 font-mono text-[12px] uppercase tracking-[0.16em] text-white/60 transition hover:text-white"
           >
-            Instagram
-          </a>
-          <a
-            href="mailto:contact@udobeton.com"
-            className="text-udo-muted hover:text-udo-accent transition-colors focus:outline-none focus:ring-2 focus:ring-udo-accent"
-          >
-            Kontakt
-          </a>
-          <a
-            href="#"
-            className="text-udo-muted hover:text-udo-accent transition-colors focus:outline-none focus:ring-2 focus:ring-udo-accent"
-          >
-            Impressum
-          </a>
+            Zu den Orten
+          </Link>
         </div>
       </div>
     </footer>

@@ -1,71 +1,42 @@
 "use client"
 
-import { useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { navigationItems } from "@/lib/udo-beton-content"
+import { cn } from "@/lib/utils"
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
-    setIsOpen(false)
-  }
+  const pathname = usePathname()
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/88 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-10">
-        <button
-          type="button"
-          onClick={() => scrollToSection("der-schuh")}
-          className="text-left"
-          aria-label="Zum Seitenanfang"
-        >
-          <span className="block font-mono text-[11px] uppercase tracking-[0.22em] text-white">UDO BETON</span>
-          <span className="mt-1 block text-[11px] tracking-[0.08em] text-white/30">
-            Handgemacht in Austria. Getragen in Berlin.
-          </span>
-        </button>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/86 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+        <Link href="/" className="flex shrink-0 flex-col text-left">
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white">UDO BETON</span>
+          <span className="mt-1 text-[11px] tracking-[0.08em] text-white/34">Sub-Brand von UDO / Berlin</span>
+        </Link>
 
-        <div className="hidden items-center gap-6 md:flex">
-          {navigationItems.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => scrollToSection(item.id)}
-              className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/56 transition hover:text-white"
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
+        <nav className="-mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0" aria-label="Hauptnavigation">
+          <div className="flex min-w-max items-center gap-5">
+            {navigationItems.map((item) => {
+              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
 
-        <button
-          type="button"
-          onClick={() => setIsOpen((current) => !current)}
-          className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/76 md:hidden"
-          aria-expanded={isOpen}
-          aria-controls="mobile-navigation"
-        >
-          Menü
-        </button>
-      </div>
-
-      {isOpen ? (
-        <div id="mobile-navigation" className="border-t border-white/10 px-4 py-3 md:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col">
-            {navigationItems.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => scrollToSection(item.id)}
-                className="border-b border-white/10 py-4 text-left font-mono text-[11px] uppercase tracking-[0.18em] text-white/74 last:border-b-0"
-              >
-                {item.label}
-              </button>
-            ))}
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "font-mono text-[11px] uppercase tracking-[0.18em] transition",
+                    isActive ? "text-white" : "text-white/52 hover:text-white",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
           </div>
-        </div>
-      ) : null}
-    </nav>
+        </nav>
+      </div>
+    </header>
   )
 }
