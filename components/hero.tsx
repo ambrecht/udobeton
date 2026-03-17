@@ -7,22 +7,23 @@ export default function Hero() {
     <section className="border-b border-white/10">
       <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-7 lg:px-10 lg:py-8">
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-black">
-          <div className="absolute inset-0 lg:left-[28%]">
+          <div className="absolute inset-0 lg:left-[22%]">
             <Image
               src={homeHero.imageSrc}
               alt={homeHero.imageAlt}
               fill
               priority
               sizes="100vw"
-              className="object-cover object-[54%_66%] sm:object-[54%_60%] lg:object-[52%_55%] xl:object-[50%_52%] [filter:grayscale(1)_contrast(1.22)_brightness(0.9)]"
+              className="object-cover object-[50%_74%] sm:object-[50%_68%] lg:object-[50%_57%] xl:object-[50%_53%] scale-[1.04] sm:scale-[1.06] lg:scale-[1.08] [filter:grayscale(1)_contrast(1.14)_brightness(0.94)]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.74)_100%)] lg:bg-[linear-gradient(90deg,rgba(0,0,0,0.97)_0%,rgba(0,0,0,0.9)_24%,rgba(0,0,0,0.5)_56%,rgba(0,0,0,0.16)_100%),linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.7)_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_49%_76%,rgba(255,255,255,0.18),transparent_18%),radial-gradient(circle_at_48%_60%,rgba(255,255,255,0.08),transparent_25%)] mix-blend-screen" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_38%,rgba(0,0,0,0.34),transparent_23%),radial-gradient(circle_at_86%_70%,rgba(0,0,0,0.22),transparent_18%),linear-gradient(180deg,rgba(0,0,0,0.16),rgba(0,0,0,0.72)_100%)] lg:bg-[linear-gradient(90deg,rgba(0,0,0,0.98)_0%,rgba(0,0,0,0.92)_23%,rgba(0,0,0,0.46)_55%,rgba(0,0,0,0.1)_100%),radial-gradient(circle_at_82%_34%,rgba(0,0,0,0.4),transparent_24%),linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.7)_100%)]" />
           </div>
 
           <div className="relative z-10 flex min-h-[74svh] flex-col justify-between p-5 sm:min-h-[780px] sm:p-7 lg:min-h-[840px] lg:p-10">
             <div className="max-w-[28rem]">
-              <span className="block h-[3px] w-14 bg-[#d31111]" />
-              <p className="mt-4 max-w-[28ch] font-mono text-[11px] uppercase tracking-[0.18em] text-white/44">
+              <span className="block h-[2px] w-9 bg-[#d31111]" />
+              <p className="mt-4 max-w-[24ch] font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
                 {homeHero.eyebrow}
               </p>
             </div>
@@ -36,11 +37,11 @@ export default function Hero() {
                 ))}
               </h1>
 
-              <p className="mt-5 max-w-[20ch] text-[16px] leading-[1.58] text-white/68 sm:text-[18px]">
+              <p className="mt-4 max-w-[18ch] text-[15px] leading-[1.5] text-white/66 sm:text-[17px]">
                 {homeHero.body}
               </p>
 
-              <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3 font-mono text-[12px] uppercase tracking-[0.16em]">
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 font-mono text-[12px] uppercase tracking-[0.16em]">
                 <Link href={homeHero.primaryAction.href} className="text-white transition hover:text-[#d31111]">
                   {homeHero.primaryAction.label}
                 </Link>
@@ -53,16 +54,12 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 border-t border-white/10 pt-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6 sm:pt-5">
-              <p className="max-w-[24ch] font-mono text-[11px] uppercase tracking-[0.16em] text-white/34">
-                {homeHero.note}
-              </p>
-
-              <div className="flex flex-wrap gap-x-4 gap-y-2 sm:justify-end">
+            <div className="flex justify-end">
+              <div className="flex flex-wrap gap-x-4 gap-y-2">
                 {homeHero.objectDetails.map((detail) => (
                   <span
                     key={detail}
-                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/42"
+                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/36"
                   >
                     {detail}
                   </span>

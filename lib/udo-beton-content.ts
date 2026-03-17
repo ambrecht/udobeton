@@ -86,9 +86,9 @@ export const navigationItems: NavigationItem[] = [
 ]
 
 export const homeHero: HomeHeroContent = {
-  eyebrow: "UDO BETON / handgemacht in Austria / in Berlin",
+  eyebrow: "UDO BETON / handgemacht in Austria / Berlin",
   titleLines: ["Handgemacht in Austria.", "Getragen in Berlin."],
-  body: "Ein robuster Lederschuh mit Haltung. Gebaut für lange Nutzung, zu sehen in Berlin.",
+  body: "Robuster Lederschuh. Für lange Nutzung in Berlin.",
   primaryAction: {
     href: "/orte",
     label: "In Berlin sehen",
@@ -161,15 +161,15 @@ export const homeEvidence: HomeEvidenceContent = {
   imageSrc: "/images_1773763632451/149103c1-5d1e-428c-85c5-f0d19c6ae08b.png",
   imageAlt: "UDO BETON Boot im Berliner Stadtraum",
   title: "Evidenz statt Behauptung.",
-  body: "Leder, Naht, Sohle und Gebrauch müssen den Schuh zuerst tragen können.",
+  body: "Beleg für Leder, Naht, Sohle und lange Nutzung.",
   action: {
     href: "/handwerk",
     label: "Zum Handwerk",
   },
   insert: {
-    label: "Objekt",
-    title: "Klare Silhouette. Kein dekorativer Umweg.",
-    body: "Die Form bleibt lesbar, bevor irgendein Text helfen muss.",
+    label: "Objekt / Profil",
+    title: "Klare Silhouette.",
+    body: "Die Form bleibt lesbar.",
     imageSrc: "/images/beton_schuh_side.png",
     imageAlt: "UDO BETON Lederschuh in Seitenansicht",
   },
@@ -178,19 +178,19 @@ export const homeEvidence: HomeEvidenceContent = {
 export const evidencePoints: EvidencePoint[] = [
   {
     title: "Leder",
-    body: "Offen für Patina. Nicht versiegelt auf Wirkung.",
+    body: "Offen für Patina und Falten. Kein versiegeltes Finish.",
   },
   {
-    title: "Naht",
-    body: "Sichtbar, belastbar, reparierbar.",
+    title: "Flexnaht",
+    body: "Sichtbar, belastbar und reparierbar.",
   },
   {
     title: "Sohle",
-    body: "Direkt am Boden. Vibram mit klarer Rückmeldung.",
+    body: "Vibram-Gummi mit Grip und klarer Rückmeldung.",
   },
   {
     title: "Gebrauch",
-    body: "Ein Schuh muss Monate tragen, nicht Minuten beeindrucken.",
+    body: "Gedacht für Monate und Jahre, nicht nur für Bilder.",
   },
 ]
 

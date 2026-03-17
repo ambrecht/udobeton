@@ -10,26 +10,26 @@ export default function Locations() {
           <SectionIntro
             eyebrow="Orte"
             title="Zwei Berliner Marker."
-            body="Ruhig. Direkt. Vor Ort."
-            titleClassName="max-w-[6ch]"
-            bodyClassName="max-w-[13rem]"
+            body="Zwei reale Eintrittspunkte."
+            titleClassName="max-w-[6ch] text-[2.85rem] sm:text-[3.6rem] xl:text-[4rem]"
+            bodyClassName="max-w-[14rem] text-[14px] sm:text-[15px]"
           />
 
           <div className="grid gap-5 xl:grid-cols-2">
             {berlinLocations.map((location) => (
               <article
                 key={location.district}
-                className="flex min-h-[260px] flex-col justify-between rounded-[1.35rem] border border-white/10 bg-white/[0.02] p-5 sm:min-h-[300px] sm:p-7"
+                className="flex min-h-[252px] flex-col justify-between rounded-[1.35rem] border border-white/10 bg-white/[0.02] p-5 sm:min-h-[288px] sm:p-7"
               >
                 <div>
                   <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/34">{location.street}</p>
-                  <h3 className="mt-7 max-w-[6ch] font-serif text-[3.25rem] leading-[0.84] tracking-[-0.1em] text-white sm:text-[4.2rem]">
+                  <h3 className="mt-6 max-w-[7ch] font-serif text-[2.85rem] leading-[0.86] tracking-[-0.09em] text-white sm:text-[3.55rem]">
                     {location.district}
                   </h3>
                 </div>
 
                 <div>
-                  <p className="max-w-[16ch] font-serif text-[1.8rem] leading-[0.98] tracking-[-0.06em] text-white sm:text-[2rem]">
+                  <p className="max-w-[17ch] font-serif text-[1.65rem] leading-[1] tracking-[-0.05em] text-white sm:text-[1.85rem]">
                     {location.mood}
                   </p>
                   <p className="mt-3 max-w-[21ch] text-[14px] leading-[1.58] text-white/52 sm:text-[15px]">

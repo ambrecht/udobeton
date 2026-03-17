@@ -32,43 +32,43 @@ export default function Gallery() {
             </figure>
 
             <div className="flex flex-col gap-7 xl:pt-2">
-              <article className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-5 sm:p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/34">
-                  {homeEvidence.insert.label}
-                </p>
-                <div className="relative mt-5 h-[180px] sm:h-[220px]">
-                  <Image
-                    src={homeEvidence.insert.imageSrc}
-                    alt={homeEvidence.insert.imageAlt}
-                    fill
-                    sizes="(max-width: 1280px) 100vw, 24vw"
-                    className="object-contain object-center opacity-95"
-                  />
-                </div>
-                <h3 className="mt-4 max-w-[10ch] font-serif text-[2.25rem] leading-[0.92] tracking-[-0.07em] text-white sm:text-[2.6rem]">
-                  {homeEvidence.insert.title}
-                </h3>
-                <p className="mt-3 max-w-[21ch] text-[14px] leading-[1.58] text-white/56 sm:text-[15px]">
-                  {homeEvidence.insert.body}
-                </p>
-              </article>
-
-              <p className="max-w-[15ch] font-serif text-[2.25rem] leading-[0.94] tracking-[-0.07em] text-white sm:text-[2.8rem]">
+              <p className="max-w-[14ch] font-serif text-[2.2rem] leading-[0.94] tracking-[-0.07em] text-white sm:text-[2.7rem]">
                 Leder, Naht, Sohle und Gebrauch müssen sichtbar arbeiten.
               </p>
 
-              <div className="grid gap-5">
+              <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-5 sm:p-6">
                 {evidencePoints.map((point, index) => (
-                  <article key={point.title} className={index > 0 ? "border-t border-white/10 pt-5" : ""}>
-                    <h3 className="font-serif text-[2rem] leading-[0.92] tracking-[-0.06em] text-white sm:text-[2.3rem]">
-                      {point.title}
-                    </h3>
-                    <p className="mt-3 max-w-[24ch] text-[14px] leading-[1.58] text-white/56 sm:text-[15px]">
+                  <article key={point.title} className={index > 0 ? "mt-5 border-t border-white/10 pt-5" : ""}>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/36">{point.title}</p>
+                    <p className="mt-2 max-w-[24ch] text-[14px] leading-[1.58] text-white/62 sm:text-[15px]">
                       {point.body}
                     </p>
                   </article>
                 ))}
               </div>
+
+              <article className="grid gap-4 rounded-[1.35rem] border border-white/10 bg-white/[0.02] p-4 sm:grid-cols-[9rem_1fr] sm:items-center sm:p-5">
+                <div className="relative h-[108px] sm:h-[120px]">
+                  <Image
+                    src={homeEvidence.insert.imageSrc}
+                    alt={homeEvidence.insert.imageAlt}
+                    fill
+                    sizes="(max-width: 1280px) 40vw, 12vw"
+                    className="object-contain object-center opacity-90"
+                  />
+                </div>
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/34">
+                    {homeEvidence.insert.label}
+                  </p>
+                  <h3 className="mt-3 max-w-[12ch] font-serif text-[1.7rem] leading-[0.96] tracking-[-0.06em] text-white sm:text-[1.95rem]">
+                    {homeEvidence.insert.title}
+                  </h3>
+                  <p className="mt-2 max-w-[22ch] text-[14px] leading-[1.54] text-white/54">
+                    {homeEvidence.insert.body}
+                  </p>
+                </div>
+              </article>
 
               <Link
                 href={homeEvidence.action.href}

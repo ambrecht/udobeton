@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import SectionIntro from "@/components/section-intro"
 import { carrierPortraits } from "@/lib/udo-beton-content"
 
 export default function Traeger() {
@@ -30,11 +29,12 @@ export default function Traeger() {
           </figure>
 
           <div className="flex flex-col justify-between gap-8">
-            <SectionIntro
-              eyebrow="Träger"
-              title="Eine Person führt. Die anderen bleiben still."
-              titleClassName="max-w-[8ch]"
-            />
+            <header className="max-w-[18rem]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/34">Träger</p>
+              <h2 className="mt-4 max-w-[9ch] font-serif text-[2rem] leading-[0.92] tracking-[-0.08em] text-white sm:text-[2.5rem]">
+                Reale Träger.
+              </h2>
+            </header>
 
             <div>
               <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-white/42">
